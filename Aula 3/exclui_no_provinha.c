@@ -66,11 +66,9 @@ TNoA *exclui(TNoA *raiz, int chave) {
 		// só tem subárvore direita ou nenhuma subárvore
 		if (raiz->esq == NULL){
 
-			if (raiz->dir != NULL ){
-				
-				TNoA *temp = raiz->dir;
-				free(raiz);
-				return temp;
+			TNoA *temp = raiz->dir;
+			free(raiz);
+			return temp;
 
 		// só tem subárvore esquerda ou nenhuma subárvore
 		} else if (raiz->dir == NULL){
@@ -81,15 +79,15 @@ TNoA *exclui(TNoA *raiz, int chave) {
 
 		} else { // nó com 2 filhos - pega o maior da subárvore esquerda
 		
-			TNoA *temp = maior_no_esquerda(raiz->esq);
+			TNoA *temp = maior_no_esquerda (raiz->esq);
 			raiz->chave = temp->chave;
-			raiz->esq= exclui(raiz->esq, temp->chave);
+			raiz->esq = exclui (raiz->esq, temp->chave);
 
 		}
 	}
 	return raiz;
 }
-}
+
  
 int main(void) {
 	TNoA *raiz, *no;
