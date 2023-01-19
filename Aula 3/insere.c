@@ -21,15 +21,17 @@ void imprime(TNoA *nodo, int tab) {
     } else printf("vazio");
 }
 
-TNoA *insere(TNoA *no, int chave) {
-    if (no == NULL) {
-        no = (TNoA *) malloc(sizeof(TNoA));
+TNoA *insere(TNoA *no, int chave) {          //recebe raiz e chave
+    if (no == NULL) {                        
+        no = (TNoA *) malloc(sizeof(TNoA));  //separa espaço para inserir a chave
         no->chave = chave;
         no->esq = NULL;
         no->dir = NULL;
-    } else if (chave < (no->chave))
+    }
+    else if (chave < (no->chave)) {        // se for menor do que a raiz, manda pro filho esquerdo
         no->esq = insere(no->esq, chave);
-    else if (chave > (no->chave)) {
+    }
+    else if (chave > (no->chave)) {         // se for maior do que a raiz, manda pro filho direito
         no->dir = insere(no->dir, chave);
     }
     else {

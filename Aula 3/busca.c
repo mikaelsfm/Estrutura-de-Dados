@@ -20,7 +20,20 @@ void imprime(TNoA *nodo, int tab) {
 }
 
 TNoA *busca(TNoA *no, int chave) {
-    
+    if (no != NULL){
+        if (no->chave > chave){
+            return busca(no->esq, chave);
+        }
+        else if (no->chave < chave){
+            return busca(no->dir, chave);
+        }
+        else{
+            return no;
+        }
+    }
+    else{
+        return NULL;
+    }
 }
 
 TNoA *insere(TNoA *no, int chave) {
@@ -49,15 +62,16 @@ int main(void) {
     insere(raiz, 550);
     insere(raiz, 400);
     imprime(raiz, 0);
+    printf("\n");
 
     no = busca(raiz, 550);
     if (no != NULL) {
-        printf("\n\nEncontrou nó de chave %d.", no->chave);
-    } else printf("Não encontrou!");
+        printf("\n\nEncontrou no de chave %d.", no->chave);
+    } else printf("Nao encontrou!\n");
 
     no = busca(raiz, 400);
     if (no != NULL) {
-        printf("\n\nEncontrou nó de chave %d.\n", no->chave);
-    } else printf("Não encontrou!\n");
+        printf("\n\nEncontrou no de chave %d.\n", no->chave);
+    } else printf("Nao encontrou!\n");
 
 }
