@@ -82,7 +82,6 @@ TNoA *exclui(TNoA *raiz, int chave) {
 			TNoA *temp = maior_no_esquerda (raiz->esq);
 			raiz->chave = temp->chave;
 			raiz->esq = exclui (raiz->esq, temp->chave);
-
 		}
 	}
 	return raiz;
