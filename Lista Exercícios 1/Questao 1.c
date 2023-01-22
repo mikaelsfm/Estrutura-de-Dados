@@ -2,6 +2,7 @@
 //e determine o comprimento máximo de umsegmento crescente destes n (números. Exemplos:Na sequência 5, 10, 3,2, 4, 7, 9, 8, 5 o comprimento do
 //segmento crescente máximo é 4.Na sequência 10, 8, 7, 5, 2 o comprimento de um segmento crescente máximo é 1.Seu programa para quando n for menor ou igual a zero.
 
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,20 +15,25 @@ void imprime_vetor(int *v, int n){
 
 int analisa_sequencia (int *v, int n){
     int aux = 1000;
-    int cont = 0;
+    int cont = 1;
+    int contmaior;
     int *p;
     p = &cont;
 
     for (int i = 0; i < n; i++){
         if (v[i] > aux){
             cont++;
+            if (cont >= contmaior){
+                contmaior = cont;
+            }
             aux = v[i];
         }
-        else {
-            aux = 1000;
+        else if (v[i] < aux){
+            cont = 1;
+            aux = v[i];
         }
     }
-    return cont;
+    return contmaior;
 }
 
 int main (){
