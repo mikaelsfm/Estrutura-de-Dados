@@ -29,6 +29,7 @@ void merge(char* nomeArq1, char* nomeArq2, char* nomeArqMerge){
             n = atoi(linha);
             // escreve no arquivo o conteudo de n linha a linha
             fprintf(arqmerge, "%d\n", n);
+            fclose(arqmerge);
             }
         }
     else {
@@ -40,6 +41,7 @@ void merge(char* nomeArq1, char* nomeArq2, char* nomeArqMerge){
         int n;
         // enquanto não chega no fim do arquivo 1
         while (!feof(arq2)){
+            arqmerge = fopen("arqmerge.txt", "a");
             // cria variavel para receber a linha
             char linha2[256];
             // lê a linha toda
@@ -54,6 +56,7 @@ void merge(char* nomeArq1, char* nomeArq2, char* nomeArqMerge){
                 fprintf(arqmerge, "\n%d\n", n);
             }
         }
+        fclose(arqmerge);
         
     }    
 }
