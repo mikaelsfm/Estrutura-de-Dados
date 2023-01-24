@@ -7,58 +7,54 @@
 #include <stdio.h>
 
 void merge(char* nomeArq1, char* nomeArq2, char* nomeArqMerge){
-    // inicia os arquivos
-    FILE *arq, *arq2, *arqmerge;
-    // abre arquivo 1
-    arq = fopen(nomeArq1, "r");
-    // abre arquivo 2
+    FILE *arq1, *arq2, *arq_merge;
+    //abre os 2 arquivos numeros em modo leitura
+    arq1 = fopen(nomeArq1, "r");
     arq2 = fopen(nomeArq2, "r");
-    // cria arquivo a ser escrito
-    arqmerge = fopen(nomeArqMerge, "w+");
-    // caso a leitura de arquivo 1 seja bem-sucedida
-    if (arq != NULL){
-        // variavel que vai receber o conteudo das linhas como inteiro                    
-        int n;
-        // enquanto não chega no fim do arquivo 1
-        while (!feof(arq)){
-            // cria variavel para receber a linha
-            char linha[256];
-            // lê a linha toda
-            fgets(linha, sizeof(linha), arq);
-            // converte o conteudo para inteiro e armazena em n
-            n = atoi(linha);
-            // escreve no arquivo o conteudo de n linha a linha
-            fprintf(arqmerge, "%d\n", n);
-            fclose(arqmerge);
+    //abrir o arquivo de merge em modo escrita
+    arq_merge = fopen(nomeArqMerge, "w");
+
+    // numeros de cada arquivo
+    int n1, n2;
+    
+    //caso consiga ler todos os arquivos
+    if (arq1 != NULL && arq2 != NULL && arq_merge){
+        n1 = fscanf(arq1,"%d", &n1);
+        n2 = fscanf(arq2,"%d", &n2);
+
+        while (!feof(arq1) && !feof(arq2)){
+            if (n1 < n2){
+                fprintf(arq_merge,"%d\n", n1);
+                fscanf(arq1, "%d", &n1);
+            }
+            else{
+                if (n1 > n2){
+                    fprintf(arq_merge,"%d\n", n2);
+                    fscanf(arq2, "%d", &n2);
+                }
+                else{
+                    fprintf(arq_merge,"%d\n", n1);
+                    fscanf(arq1, "%d", &n1);
+                    fscanf(arq2, "%d", &n2);
+                }
             }
         }
-    else {
-        printf ("Não foi possivel abrir o arquivo");
+        while (!feof(arq1)) {
+			fprintf(arq_merge, "%d\n", n1);
+			fscanf(arq1, "%d", &n1);
+		}
+		//grava arq 2 até terminar
+		while (!feof(arq2)) {
+			fprintf(arq_merge, "%d\n", n2);
+			fscanf(arq2, "%d", &n2);
+        }
     }
-    // caso a leitura de arquivo 2 seja bem-sucedida
-    if (arq2 != NULL){
-        // variavel que vai receber o conteudo das linhas como inteiro
-        int n;
-        // enquanto não chega no fim do arquivo 1
-        while (!feof(arq2)){
-            arqmerge = fopen("arqmerge.txt", "a");
-            // cria variavel para receber a linha
-            char linha2[256];
-            // lê a linha toda
-            fgets(linha2, sizeof(linha2), arq2);
-            // converte o conteudo para inteiro e armazena em n
-            n = atoi(linha2);
-            // variavel para receber a linha de arqmerge
-            int n2;
-            fgets(linha2, sizeof(linha2), arqmerge);
-            n2 = atoi(linha2);
-            if (n != n2){
-                fprintf(arqmerge, "\n%d\n", n);
-            }
-        }
-        fclose(arqmerge);
-        
-    }    
+    else{
+        printf("Não foi possível ler arquivo");
+    }
+    fclose(arq1);
+    fclose(arq2);
+    fclose(arq_merge);
 }
 
 int main (){

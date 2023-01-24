@@ -7,7 +7,7 @@ void merge(char *nomeArq1, char *nomeArq2, char *nomeArqMerge) {
 	//abre os 2 arquivos numeros em modo leitura
 	/*FAZER CODIGO AQUI*/
 	
-	//abrir o arquivo de merge em modo escrita
+	
 	/*FAZER CODIGO AQUI*/
 
 	//um numero de cada arquivo
