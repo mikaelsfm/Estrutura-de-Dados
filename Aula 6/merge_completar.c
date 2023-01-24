@@ -6,10 +6,12 @@ void merge(char *nomeArq1, char *nomeArq2, char *nomeArqMerge) {
 
 	//abre os 2 arquivos numeros em modo leitura
 	/*FAZER CODIGO AQUI*/
+	arq1 = fopen(nomeArq1, "r");
+	arq2 = fopen(nomeArq2, "r");
 	
 	
 	/*FAZER CODIGO AQUI*/
-
+	arq_merge = fopen(nomeArqMerge, "w");
 	//um numero de cada arquivo
 	int n1, n2;
 
@@ -24,11 +26,15 @@ void merge(char *nomeArq1, char *nomeArq2, char *nomeArqMerge) {
 				//salva o n1 no arquivo merge
 				//lê o proximo número do arq1
 				/*FAZER CODIGO AQUI*/
+				fprintf(arq_merge, "%d\n", n1);
+				fscanf(arq1, "%d", &n1);
 			} else {
 				if (n2 < n1) {
 				//salva o n2 no arquivo merge
 				//lê o proximo número do arq2
 				/*FAZER CODIGO AQUI*/
+				fprintf(arq_merge, "%d\n", n2);
+				fscanf(arq2, "%d", &n2);
 				} else {
 					//sao iguais - grava um e avança ambos
 					fprintf(arq_merge, "%d\n", n1);
@@ -50,6 +56,9 @@ void merge(char *nomeArq1, char *nomeArq2, char *nomeArqMerge) {
 		}
 		//Fechar todos os arquivos
 		/*FAZER CODIGO AQUI*/
+		fclose(arq1);
+		fclose(arq2);
+		fclose(arq_merge);
 	} else printf("Erro ao abrir arquivos");
 }
 
@@ -66,12 +75,13 @@ void grava_arquivo_strings(char *nomeArq, int inicio, int fim, int incremento) {
 			fprintf(arq, "%s\n", s); //grava no arquivo
 		}
 		fclose(arq);
-	} else {
+	}
+	else {
 		printf("Erro ao abrir arquivo\n");
 	}
 }
 
-int main(int argc, char **argv) {
+int main() {
 	grava_arquivo_strings("numeros1.txt", 10, 30, 3);
 	grava_arquivo_strings("numeros2.txt", 8, 20, 2);
 	merge("numeros1.txt", "numeros2.txt", "merge.txt");
