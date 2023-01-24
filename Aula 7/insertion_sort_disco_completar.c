@@ -68,7 +68,7 @@ void imprime_arquivo(FILE *arq) {
     //le o arquivo e coloca no vetor
     rewind(arq); //posiciona cursor no inicio do arquivo
     TFunc *f = le(arq);
-    int i = 0;
+    //int i = 0;
     while (!feof(arq)) {
         imprime(f);
         f = le(arq);
@@ -124,8 +124,28 @@ void insere_funcionarios(FILE *out) {
  */
 void insertion_sort_disco(FILE *arq, int tam) {
 	/*TODO código do insertion sort fazendo as trocas direto em disco*/
-	/*FAZER CODIGO AQUI*/    
-
+	/*FAZER CODIGO AQUI*/ 
+    int i = 0;
+    for (int j = 2; j < tam; j++){
+    fseek(arq, (j-1) * tamanho_registro(), SEEK_SET);
+    TFunc *fj = le(arq);
+    i = j-1;
+    fseek(arq, (i-1) * tamanho_registro(), SEEK_SET);
+    TFunc *fi = le(arq);
+  
+    while ((i > 0) && (fi->cod > fj->cod)){
+        fseek(arq, i * tamanho_registro(), SEEK_SET);
+        salva(fi, arq);
+        fseek(arq, (i-1) * tamanho_registro(), SEEK_SET);
+        fi = le(arq);
+        i = i-1;
+        fseek(arq, (i-1)*tamanho_registro(), SEEK_SET);
+        fi = le(arq);
+    }
+    fseek(arq, i * tamanho_registro(), SEEK_SET);
+    salva(fj, arq);
+}
+fflush(arq);
 }
 
 int main() {

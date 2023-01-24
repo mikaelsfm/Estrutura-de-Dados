@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include "funcionario.h"
+#include "funcionario.c"
 
 void insere_5_funcionarios(FILE *out) {
 	printf("Inserindo 5 funcionários no arquivo...");
@@ -141,7 +142,7 @@ void altera_ultimo_nome(FILE *in, char* novo_nome) {
 
 }
 
-int main(int argc, char** argv) {
+int main() {
 	//declara ponteiro para arquivo
 	FILE *out;
 	//abre arquivo
