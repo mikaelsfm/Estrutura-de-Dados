@@ -13,7 +13,7 @@ typedef struct Funcionario {
 // Imprime funcionario
 void imprime(TFunc *func) {
 	printf("**********************************************");
-	printf("\nFuncionario de código ");
+	printf("\nFuncionario de codigo ");
 	printf("%d", func->cod);
 	printf("\nNome: ");
 	printf("%s", func->nome);
@@ -155,7 +155,7 @@ void selection_sort_disco(FILE *arq, int tam) {
 		
 		//Troca fmenor de posição com fi, se realmente for menor
 		if (fmenor->cod < fi->cod) {
-			printf("Troca %d na posição %d por %d na posição %d\n", fi->cod, i, fmenor->cod, posmenor);
+			printf("Troca %d na posicao %d por %d na posicao %d\n", fi->cod, i, fmenor->cod, posmenor);
 			/*FAZER CODIGO AQUI*/
 			fseek(arq, (i-1)*tamanho_registro(), SEEK_SET);
 			salva(fmenor, arq);
@@ -164,9 +164,9 @@ void selection_sort_disco(FILE *arq, int tam) {
 			
 			
 			
-		} else printf("Não troca...");
-		free(fi);
-		free(fmenor);
+		} else printf("Nao troca...");
+	free(fi);
+	free(fmenor);
 	}
 	
 	//faz o flush do buffer para ter certeza que dados foram gravados
