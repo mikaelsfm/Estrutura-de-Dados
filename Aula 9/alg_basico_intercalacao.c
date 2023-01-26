@@ -60,9 +60,9 @@ void algBasInt (char *saida, TPart *vet, int P){
 
 
 int main(int argc, char **argv){
-	if(argc != 2) exit(1); 
+	//if(argc != 2) exit(1); 
 
-	printf("%s\n", argv[1]);
+	//printf("%s\n", argv[1]);
 
 	int P;
 	printf("Entrar o número de partições\n");
@@ -78,6 +78,6 @@ int main(int argc, char **argv){
 		scanf("%s", vet[i].nome);
 	}
 
-	algBasInt (argv[1], vet, P);
+	algBasInt ("argv[1]", vet, P);
 	return 0;
 }
