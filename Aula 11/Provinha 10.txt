@@ -1,0 +1,22 @@
+Mikael - 47
+
+
+
+Busca pelo local a ser inserido:
+1 - Começar na raiz da árvore e percorrer o índice, até chegar ao nó folha correto para se colocar o número
+2 - Se o nó folha estiver cheio, deve-se particioná-lo
+3 - Caso não esteja cheio,inserir a nova chave no nó folha adequado
+
+
+Particionamento de Nó Folha:
+1 - Se a quantidade de chaves no nó atingir o limite de capacidade (2d+1), dividir o nó em duas metades iguais
+2 - Copiar a chave central (d+1) para o nó pai e atualizar o ponteiro do nó pai para apontar para as duas novas metades do nó folha, mantendo o registro d+1 no nó folha
+
+
+Particionamento de Nó Interno:
+1 - Se a quantidade de chaves no nó atingir o limite de capacidade, dividir o nó em três partes: 
+	a) As d primeiras chaves se mantem no nó à esquerda
+	b) A chave central é movida para o nó pai
+	c) As duas restantes são movidas para o novo nó a direita
+
+2 - Atualizar o ponteiro do nó pai para apontar para as duas novas partes do nó interno

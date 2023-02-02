@@ -1,0 +1,10 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /Users/vanessa/Dropbox/Documents/Disciplinas/ED/Aulas/13-Hash/hash-basico/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1556a/fast && make: getcwd: No such file or directory
+make: Makefile: No such file or directory
+make: *** No rule to make target `Makefile'.  Stop.
+
+
+
+
